@@ -23,18 +23,17 @@
     {
       "type": "virtualbox-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstart.cfg<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 81920,
+      "disk_size": 10240,
       "guest_os_type": "RedHat_64",
       "headless": true,
       "http_directory": "http",
       "iso_urls": [
-        "Rocky-8.5-x86_64-dvd1.iso",
-        "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-dvd1.iso"
+        "../../iso/Rocky-8.9-x86_64-minimal.iso"
       ],
-      "iso_checksum": "sha256:0081f8b969d0cef426530f6d618b962c7a01e71eb12a40581a83241f22dfdc25",
+      "iso_checksum": "sha256:06019fd7c4f956b2b0ed37393e81c577885e4ebd518add249769846711a09dc4",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -64,11 +63,6 @@
       {
         "output": "builds/{{.Provider}}-rockylinux8.box",
         "type": "vagrant"
-      },
-      {
-        "type": "vagrant-cloud",
-        "box_tag": "geerlingguy/rockylinux8",
-        "version": "{{user `version`}}"
       }
     ]
   ]
